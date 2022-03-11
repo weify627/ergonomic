@@ -9,6 +9,11 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/YouCompleteMe
 set runtimepath-=~/.vim/bundle/vim-autoformat
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+      silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
 call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
